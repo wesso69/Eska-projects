@@ -1,0 +1,50 @@
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="css/style.css">
+
+    </head>
+
+    <body>
+        <script src="Script/Script.js"></script>
+        <div class="header">
+            <h1>Add  new gamer</h1>
+        </div>
+        <div class="main">
+            <form class="w3-container" action="SavePlayer" method="post" onsubmit="return validateForm()" name="form1">
+                <P>
+                    <label>ID:</label>
+                    <input class="w3-input" type="text" name="ID">
+                </p>
+                <p>
+                    <label>Fname:</label>
+                    <input class="w3-input" type="text" name="Fname">
+                </p>
+                <p>
+                    <label>Lname:</label>
+                    <input  class="w3-input" type="text" name="Lname">
+                </p>
+                <p>
+                    <label>About:</label> 
+                    <input class="w3-input" type="text" name="About">
+                </p>
+                <p>
+                    <label>AGE:</label> 
+                    <input class="w3-input" type="text" name="AGE">
+                </p>
+                <input class="w3-input" type="submit" value="Save Gamer"/><br>
+
+                <a style="margin-left:40%;" href="ViewPlayers"  target="_blank">view players</a>  
+            </form>
+
+        </div>
+        <footer >
+            <p>Author: waseem Ayman<br>
+                <a href="mailto:hege@example.com">Test@Test.</p>
+        </footer>
+    </body>
+</html>

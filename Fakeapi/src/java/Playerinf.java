@@ -20,7 +20,7 @@ public class Playerinf {
         return instance;
     }
     //getconnection() method that returns connection to use it more than one time 
-
+   
     public Connection getConnectionOLD() {
         String uname = "root";
         String pass = "Waseem.123";

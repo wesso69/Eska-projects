@@ -41,6 +41,8 @@ public class ViewPlayers extends HttpServlet {
                     int id = p.getId();
                     out.println(" " + id + jsonObj.toString(7));
                     out.println("<a href='DeletePlayer?id=" + p.getId() + "'>delete</a>");
+                    System.out.println(jsonObj);
+                  
                 });
             } else {
                 out.print("map is empty");
@@ -48,5 +50,6 @@ public class ViewPlayers extends HttpServlet {
         } catch (Exception ex) {
             out.print(ex);
         }
+        
     }
 }

@@ -1,0 +1,23 @@
+<?xml version = "1.0"?>
+<class>
+    <player rollno = "393">
+        <firstname>waseem</firstname>
+        <lastname>shraideh</lastname>
+        <nickname>wesso</nickname>
+        <marks>85</marks>
+    </player>
+   
+    <player rollno = "493">
+        <firstname>saleem</firstname>
+        <lastname>shraideh</lastname>
+        <nickname>solom</nickname>
+        <marks>95</marks>
+    </player>
+   
+    <player rollno = "593">
+        <firstname>sameer</firstname>
+        <lastname>shraideh</lastname>
+        <nickname>sameeroz</nickname>
+        <marks>90</marks>
+    </player>
+</class>

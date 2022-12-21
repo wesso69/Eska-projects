@@ -4,14 +4,15 @@ import java.util.Random;
 
 public class Dotagame {
 
-    private static final String[] Teams= {"Dire", "Radiant"};
-    private static final String[] Lanes = {"top", "Bot", "mid", "Direjungle", "Radiantjungle", "Diretriangle", "Radianttriangle"};
-
+    private static final String[] Teams = {"Dire", "Radiant"};
+    private static final String[] Lanes = {"top Lane", "Bot Lane", "mid Lane", "(Direjungle )", "(Radiantjungle)", "(Diretriangle)", "(Radianttriangle)"};
+    
     public static void main(String[] args) {
         for (int i = 1; i <= 10; i++) {
             Player player = new PlayerFactory().getPlayerteam(getRandomTeam());
             player.assignLane(getRandLane());
             player.mission();
+
         }
     }
 

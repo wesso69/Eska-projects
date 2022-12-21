@@ -15,7 +15,7 @@ public class Playerservlet extends HttpServlet {
         String requestUrl = req.getRequestURI();
         String pid = requestUrl.substring("/Fakeapi/players*".length());
         Player p = Playerinf.getinstance().getplayerId(Integer.parseInt(pid));
-
+        
         if (p != null) {
             String json;
             json = "{ ";

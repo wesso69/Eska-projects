@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package state3;
+package fly4;
 
 /**
  *
  * @author W.Shraideh
  */
-public class main {
-    public static void main(String[] args) {
-        alertstateContext asc = new alertstateContext();
-        asc.alert("facebook");
+public class store {
+     public static void main(String[] args) {
+        bird b = new birdsFactory().birdsfactory("canari");
+        b.fly();
     }
 }

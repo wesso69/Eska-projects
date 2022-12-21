@@ -3,15 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package state3;
+package absfac;
 
 /**
  *
  * @author W.Shraideh
  */
-public class main {
-    public static void main(String[] args) {
-        alertstateContext asc = new alertstateContext();
-        asc.alert("facebook");
+public class s7tablet  implements tablet{
+
+    @Override
+    public void watch() {
+        System.out.println("watching form s7tablet");
     }
+    
 }

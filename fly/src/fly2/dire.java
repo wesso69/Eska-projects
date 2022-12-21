@@ -12,7 +12,7 @@ package fly2;
 public class dire implements Player {
 
     private final String Task;
-
+    String Role;
     String lane;
 
     public dire() {
@@ -25,8 +25,13 @@ public class dire implements Player {
     }
 
     @Override
+    public void assignRole(String role) {
+        this.Role = role;
+    }
+
+    @Override
     public void mission() {
-        System.out.println("dire mission in this game in the " + lane + " is " + Task);
+        System.out.println("A dota player with a role of " + Role + "with a dire mission in this game in the " + lane + " is " + Task);
     }
 
 }

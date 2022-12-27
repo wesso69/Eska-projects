@@ -2,6 +2,8 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import javax.servlet.http.HttpServletResponse;
+import org.json.simple.JSONObject;
 
 public class TransactionsDao {
 
@@ -31,4 +33,43 @@ public class TransactionsDao {
         }
         return recordState;
     }
+    @SuppressWarnings("unchecked")
+	public static JSONObject updateIsExecutuig(String transaction, HttpServletResponse response) throws SQLException {
+
+		PreparedStatement ps = null;
+		Connection c = null;
+		JSONObject jsonObject = new JSONObject();
+                GetJson g = new GetJson();
+		try {
+			c = ConnectionFactory.getConnection();
+
+			String query = "UPDATE bsa_transactions SET IS_executuig = true WHERE TRANSACTION_ID = ? ";
+
+			ps = c.prepareStatement(query);
+
+			ps.setString(1, transaction);
+
+			int counter = ps.executeUpdate();
+
+			if (counter > 0) {
+				g.setStatus("Success");
+			} else {
+				g.setStatus("Failed");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			g.setErrorMessage(e.getMessage());
+
+		} finally {
+			
+
+			// Create jsonObject
+			jsonObject.put("TRANSACTION_ID", transaction);
+			jsonObject.put("status", g.getStatus());
+			jsonObject.put("error message", g.getErrorMessage());
+
+		}
+
+		return jsonObject;
+	}
 }

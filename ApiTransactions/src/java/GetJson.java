@@ -1,87 +1,43 @@
-
-import java.io.FileNotFoundException;
-import java.sql.SQLException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- *
- * @author W.Shraideh
- */
 public class GetJson {
 
-    @SuppressWarnings("unchecked")
-    public JSONObject GetTags(HttpServletRequest request, HttpServletResponse response, String body)
-            throws FileNotFoundException {
-        boolean success = false;
-        JSONObject finalObject = new JSONObject();
-        JSONArray jsonArray = new JSONArray();
-        JSONObject responseObject = new JSONObject();
-        JSONObject jsonResponse = new JSONObject();
-        JSONArray responseArray = new JSONArray();
-        String errorMessage = "";
-        String status = "";
+	private String transactionId;
+	private String status;
+	private String errorMessage;
 
-        try {
+	public GetJson(String transactionId, String status, String errorMessage) {
+		super();
+		this.transactionId = transactionId;
+		this.status = status;
+		this.errorMessage = errorMessage;
+		
+	}
 
-            jsonArray = (JSONArray) new JSONParser().parse(body);
+	public GetJson() {
+		super();
+	}
 
-            for (int i = 0; i < jsonArray.size(); i++) {
-                finalObject = (JSONObject) jsonArray.get(i);
-                
-                String priority = finalObject.get("priority").toString();
-                String AppointmentNo = finalObject.get("AppointmentNo").toString();
-                String FeasibilityId = finalObject.get("FeasibilityId").toString();
-                String is_success = finalObject.get("FiberType").toString();
-                String trancationId = finalObject.get("Transaction").toString();
+	public String getTransactionId() {
+		return transactionId;
+	}
 
-//                Transactions t = new Transactions();
-//                t.setAppointmentNo(AppointmentNo);
-//                t.setFeasibilityId(FeasibilityId);
-//                t.setTRANSACTION_ID(Integer.valueOf(trancationId));
-//                t.setPriority(priority);
-//                t.setIs_success(false);
+	public void setTransactionId(String transactionId) {
+		this.transactionId = transactionId;
+	}
 
-                int saved = TransactionsDao.insert(Integer.valueOf(trancationId),priority,AppointmentNo,FeasibilityId,success);
-                if (saved > 0) {
-                    System.out.println("Successfully!");
-                }
-                if (is_success.equalsIgnoreCase("FTTB") || is_success.equalsIgnoreCase("FTTH")) {
-                    success = true;
+	public String getStatus() {
+		return status;
+	}
 
-                } else {
-                    success = false;
-                }
-              
-                responseArray.add(responseObject);
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
-            }
+	public String getErrorMessage() {
+		return errorMessage;
+	}
 
-            status = "Success";
-        } catch (NumberFormatException | SQLException | ParseException e) {
-            e.getMessage();
-            status = "Failed";
-            errorMessage = e.getMessage();
-        
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
+	}
 
-        } finally {
-            jsonResponse.put("errro message", errorMessage);
-            jsonResponse.put("status", status);
-            jsonResponse.put("data", responseArray);
-
-        }
-     return jsonResponse;
-    }
 }
-
-
-

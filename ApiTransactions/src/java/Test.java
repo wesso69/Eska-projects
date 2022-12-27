@@ -23,20 +23,20 @@ public class Test extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         doPost(req, res);
     }
-  LocalTime time = LocalTime.now();
+    LocalTime time = LocalTime.now();
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
         PrintWriter out = res.getWriter();
         JSONObject responseObject = new JSONObject();
-        GetJson g = new GetJson();
         try {
             if (req.getMethod().equalsIgnoreCase("POST")) {
                 Readtransaction readBody = new Readtransaction();
                 String body = readBody.getBody(req);
+                System.out.println(body);
+                GetData g = new GetData();
                 responseObject = g.GetTags(req, res, body);
-                System.out.println(responseObject);
-                
             }
         } catch (IOException e) {
             System.out.println(e);
@@ -45,5 +45,4 @@ public class Test extends HttpServlet {
         out.print(responseObject);
         out.flush();
     }
-
 }
